@@ -1,0 +1,11 @@
+FROM node as builder
+WORKDIR /usr/src/app
+COPY ["package.json", "package-lock.json", "./"]
+RUN ["npm", "install"]
+COPY . .
+RUN ["npx", "tsc"]
+
+FROM builder as executer
+WORKDIR /usr/src/app
+ENTRYPOINT ["node", "./build/index"]
+USER node
