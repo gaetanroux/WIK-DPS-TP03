@@ -3,7 +3,7 @@ version: "3.8"
 
 # Déclaration des services
 services:
-  # Un service nommée my_app
+  # Un service nommée api_typescript
   api_typescript:
     # Définition du Dockerfile à build et à utiliser
     build:
@@ -16,7 +16,7 @@ services:
 
     # Nombre de réplicas souhaités du même container
     deploy:
-      replicas: 4 # Ici on déploie 4 fois le container au sein du service my_app
+      replicas: 4 # Ici on déploie 4 fois le container au sein du service api_typescript
 
     # Rédemarrage automatique dans tous les cas lorsqu'un container s'arrête
     restart: always
@@ -47,7 +47,7 @@ services:
       - 8081:80
 
     # Définir une relation de dépendance
-    # Si my_app n'est pas prêt alors pas de proxy
+    # Si api_typescript n'est pas prêt alors pas de proxy
     depends_on:
       - api_typescript
 
